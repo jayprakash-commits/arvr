@@ -3,47 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JP AR MENU</title>
+    <title>JP AR MENU - Scaling Fix</title>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
     <style>
-        body { margin: 0; background: #ffffff; font-family: sans-serif; text-align: center; }
-        .header { padding: 20px; border-bottom: 2px solid #000; font-weight: bold; font-size: 20px; background: white; position: sticky; top: 0; z-index: 10; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; padding: 15px; }
-        .card { border: 1px solid #ddd; border-radius: 15px; padding: 10px; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        model-viewer { width: 100%; height: 350px; background-color: #f9f9f9; --poster-color: transparent; }
-        .btn { background: #000; color: #fff; border: none; padding: 15px; width: 100%; border-radius: 10px; font-weight: bold; margin-top: 10px; cursor: pointer; }
+        body { margin: 0; background: #fff; font-family: sans-serif; text-align: center; }
+        .instructions { padding: 15px; border-bottom: 2px solid #000; font-weight: bold; background: #fff; position: sticky; top: 0; z-index: 10; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px; }
+        .card { border: 1px solid #ddd; border-radius: 15px; padding: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        model-viewer { width: 100%; height: 300px; background-color: #fafafa; }
+        .btn { background: #000; color: #fff; border: none; padding: 12px; width: 100%; border-radius: 8px; font-weight: bold; margin-top: 10px; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <div class="header">JP's 3D DONUT MENU</div>
+    <div class="instructions">SCALING: 0.4 (40% Size) • PINCH TO RESIZE</div>
 
     <div class="grid">
         <div class="card">
-            <h3>DONUT SPECIAL 1</h3>
+            <h3>Donut 1</h3>
             <model-viewer 
                 id="m1" 
-                src="5.glb" 
-                ar 
-                ar-modes="webxr scene-viewer quick-look" 
+                src="donut.glb" 
+                ar ar-modes="webxr scene-viewer quick-look" 
                 camera-controls 
-                shadow-intensity="1" 
-                auto-rotate
-                loading="eager"
-                alt="3D Donut Model">
-            </model-viewer>
+                shadow-intensity="1"
+                exposure="1"
+                scale="0.4 0.4 0.4" 
+                ar-scale="fixed"> </model-viewer>
             <button class="btn" onclick="document.querySelector('#m1').activateAR()">VIEW IN AR</button>
         </div>
 
         </div>
 
-    <script>
-        // Ye script check karegi ki file load hui ya nahi
-        const mv = document.querySelector('model-viewer');
-        mv.addEventListener('error', (event) => {
-            console.log("Error loading model:", event);
-            alert("Bhai model load nahi hua! Ek baar check karo file ka naam 'donut.glb' hi hai na?");
-        });
-    </script>
 </body>
 </html>
